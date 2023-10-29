@@ -1,0 +1,110 @@
+#include<cmath>
+#include <iostream>
+using namespace std;
+
+int main()//1
+{
+    setlocale(LC_ALL, "ru");
+    int n=0,y;
+    double sum = 0.0,p,ecp;
+    cin >> ecp >> y;
+    double a, b;
+    a = 1;
+    b = 1;
+    p = a / b;
+    sum += p;
+    while (abs(p)>ecp)
+    {
+        ++n;
+        b*=n;
+        a *= y;
+        p = a / b;
+        sum += p;
+    }
+    cout << sum << endl;
+    cout << exp(y) << endl;
+    system("pause");
+}
+ int main()//2
+
+{
+    setlocale(LC_ALL, "ru");
+    int n = 2;
+    double sum = 0.0, p, ecp,y;
+    cin >> ecp >> y;
+    double a=-1, b=pow(y,2);
+    p =  a*b/n;
+    sum += y+p;
+    while (abs(p) > ecp)
+    {
+        ++n;
+        a *= -1;
+        b *= y;
+        p = (a * b)/n;
+        sum += p;
+    }
+    cout << sum << endl;
+    cout << log(1 + y) << endl;
+    system("pause");
+}
+ int main()//3
+{
+    setlocale(LC_ALL, "ru");
+    int n = 0;
+    double sum = 0.0, p, ecp,x;
+    cin >> ecp >> x;
+    double a=1, b=1, c=1;
+    p = 1;
+    sum += p;
+    while (abs(p) > ecp)
+    {
+        ++n;
+        a = -a;
+        b =b* x*x;
+        c =c*2 * n* (2 * n - 1);
+        p = a * b / c;
+        sum += p;
+    }
+    cout << sum << endl;
+    cout << cos(x) << endl;
+    system("pause");
+}
+
+int main()//4
+{
+    setlocale(LC_ALL, "ru");
+    int n = 1;
+    double sum = 0.0, p, ecp, x;
+    cin >> ecp >> x;
+    double a = pow(x, 2),b=1;
+    p = 1/(a+b);
+    sum += p;
+    while (abs(p) > ecp)
+    {
+        ++n;
+        b = pow(n,3);
+        p = 1 / (a + b);
+        sum += p;
+    }
+    cout << sum << endl;
+    system("pause");
+}
+int main()//5
+{
+    setlocale(LC_ALL, "ru");
+    int n = 1;
+    double sum = 0.0, p, ecp, x;
+    cin >> ecp >> x;
+    double a = abs(x),b=1;
+    p = x / (1 + b + n * a);
+    sum += p;
+    while (abs(p) > ecp)
+    {
+        ++n;
+        b = pow(n, 3);
+        p = x / (1+b+n*a);
+        sum += p;
+    }
+    cout << sum << endl;
+    system("pause");
+}

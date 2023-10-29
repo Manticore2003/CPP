@@ -1,0 +1,33 @@
+#include<iostream>
+
+using namespace std;
+
+bool p(int y) {
+	int d = 0;
+	for (int a = 1; a <= y; a++) {
+		if (y % a == 0) {
+			d++;
+		}
+	}
+	if (d == 2) {
+		return 1;
+	}
+	else
+		return 0;
+}
+int main()
+{
+	int count = 0;
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int mas[n] = { 6,1,5,2,25 };
+	int min = mas[2];
+	for (int i = 0; i < n; i++) {
+		if ((p(i) == 1) && (mas[i] < min)) {
+			min = mas[i];
+		}
+	}
+	cout <<"Наимееньший элемент, индекс которого простое число = " << min << endl;
+	system("pause");
+	return 0;
+}

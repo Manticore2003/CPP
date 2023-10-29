@@ -1,0 +1,118 @@
+#include<iostream>
+
+using namespace std;
+
+struct list {
+    int info;
+    list* next;
+    list* pred;
+};
+
+int sum(int a) {
+    int s = 0;
+    while (a != 0) {
+        s += a % 10;
+        a /= 10;
+    }
+    return s;
+}
+
+int main()
+{
+    setlocale(LC_ALL, "ru");
+    list* head = NULL;
+    list* last = NULL;
+    int x;
+    cout << "Введите злементы списка " << endl;
+    cin >> x;
+    if (x != 0) {
+        head = new (list);
+        head->info = x;
+        head->next = NULL;
+        head->pred = NULL;
+        last = head;
+        cin >> x;
+        while (x != 0) {
+            list* r = new(list);
+            r->info = x;
+            r->next = NULL;
+            r->pred = last;
+            last->next = r;
+            last = r;
+            cin >> x;
+        }
+    }
+    cout << "Вывод списка " << endl;
+    list* p = head;
+    while (p != NULL)
+    {
+        cout << (p->info) << " ";
+        p = p->next;
+    }
+    p = head;
+    bool del = true;
+    while (p != NULL)
+    {
+        int c = 0, k = p->info;
+        while (k != NULL)
+        {
+            c++;
+            k /= 10;
+        }
+        if (c % 2 != 0)
+        {
+            del = false;
+            break;
+        }
+        p = p->next;
+    }
+    p = head;
+    if (del)
+    {
+        while (p->next != NULL)
+        {
+            if (p->next->info < 0)
+            {
+                list* r = p->next;
+                p->next = p->next->next;
+                delete r;
+            }
+            else p = p->next;
+        }
+        if (head->info < 0)
+        {
+            list* r = new(list);
+            head = head->next;
+            delete r;
+        }
+    }
+    else
+    {
+        while (p != NULL)
+        {
+            list* r = new(list);
+            r->info = sum(p->info);
+            r->next = p->next;
+            r->pred = p;
+            p->next = r;
+            p = r;
+            p = p->next;
+        }
+    }
+    p = head;
+    cout << endl;
+    cout << "Вывод нового списка: ";
+    while (p != NULL)
+    {
+        cout << (p->info) << " ";
+        p = p->next;
+    }
+    while (head != NULL)
+    {
+        p = head;
+        head = head->next;
+        delete p;
+    }
+    system("pause");
+    return 0;
+}

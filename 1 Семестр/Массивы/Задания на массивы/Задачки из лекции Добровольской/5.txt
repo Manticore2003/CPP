@@ -1,0 +1,29 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 10;
+	int mas[n], max = mas[0],k=0;
+	srand(time(0));
+	for (int i = 0; i < n; i++) {
+		mas[i] = rand() % 10;
+		cout << mas[i];
+	}
+	cout << endl;
+	for (int i = 0; i < n; i++) {
+		if (mas[i] > max) {
+			max = mas[i];
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		if (mas[i] == max) {
+			k++;
+		}
+	}
+	cout << "Количество макисмальных элементов массива = " << k << endl;
+	system("pause");
+	return 0;
+}

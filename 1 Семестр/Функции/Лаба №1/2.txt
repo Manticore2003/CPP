@@ -1,0 +1,22 @@
+#include<iostream>
+
+using namespace std;
+
+void kd(int a) {
+	for (int i = 1; i <= a; i++) {
+		if (a % i == 0)
+			cout << i << " ";
+	}
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Введите число " << endl;
+	int n;
+	cin >> n;
+	cout << "Делители числа: " << endl;
+	kd(n);
+	cout << endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,50 @@
+ф#include <iostream>
+#include<cmath>
+
+using namespace std;
+
+struct list {
+	int info;
+	list* next;
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	int x;
+	cin >> x;
+	while (x != 0) {
+		list* r = new(list);
+		r->info = x;
+		r->next = head;
+		head = r;
+		cin >> x;
+	}
+	cout << "Вывод списка " << endl;
+	list* p = head;
+	while (p != NULL) {
+		cout << (p->info) << " ";
+		p = p->next;
+	}
+	p = head;
+	int srednee = 0, k = 0, sum = 0;
+	while (p != NULL) {
+		if (abs(p->info) % 2 != 0 && p->info < 0) {
+			k++;
+			sum += p->info;
+		}
+		p = p->next;
+	}
+	cout << endl;
+	if (k != 0)
+		srednee = sum / k;
+	cout << "Среднее = " << srednee << endl;
+	p = head;
+	system("pause");
+	while (head != NULL) {
+		p = head;
+		head = head->next;
+		delete p;
+	}
+	return 0;
+}

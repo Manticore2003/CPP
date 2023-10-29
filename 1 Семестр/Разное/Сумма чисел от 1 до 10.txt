@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int k = 0, d = 0;
+	while (k != 11) {
+		d += k;
+		k++;
+	}
+	cout << "Сумма цифр от 1 до 10 = " << d << endl;
+	system("pause");
+	return 0;
+}

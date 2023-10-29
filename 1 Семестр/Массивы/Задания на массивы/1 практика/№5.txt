@@ -1,0 +1,24 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int mas[n];
+	cout << "Введите 5 элементов массива\n";
+	for (int i = 0; i < n; i++) {
+		cin >> mas[i];
+	}
+	int k = 0,SREDNEE=0,sum=0;
+	for (int i = 0; i < n; i++) {
+		if ((i % 2 == 0) && (mas[i]%7== 0)) {
+			sum+=mas[i];
+			k++;
+		}
+	}
+	SREDNEE = sum / k;
+	cout << "Среднее арифметическое = " << SREDNEE << endl;
+	system("pause");
+	return 0;
+}

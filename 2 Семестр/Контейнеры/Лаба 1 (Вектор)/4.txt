@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int k = 0, max = -10;
+	vector <int> v(10);
+	srand(time(NULL));
+	for (int i = 0; i < v.size(); i++) {
+		v[i] = (rand() % 11 - 5);
+	}
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << " ";
+	}
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i] > max)
+			max = v[i];
+	}
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i] == max)
+			k++;
+	}
+	cout << endl;
+	cout <<"Количество = " << k << endl;
+	system("pause");
+	return 0;
+}

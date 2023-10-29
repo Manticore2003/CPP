@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+struct Znak {
+	char full_name[100];
+	int zodiak;
+	int birthday[3];
+};
+Znak s[2];
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	for (int i = 0; i < 2; i++) {
+		cout << "Введите полное имя" << endl;
+		cin >> s[i].full_name;
+		cout << "Введите номер зодиака " << endl;
+		cin >> s[i].zodiak;
+		cout << "Введите дату рождения" << endl;
+		cin >> s[i].birthday[0]>>s[i].birthday[1]>>s[i].birthday[2];
+	}
+	char surname[100];
+	cout << "Введите фамилию " << endl;
+	cin >> surname;
+		int p = 1;
+		const int n = 100;
+		for (int i = 0; i < 2; i++) {
+			int p = 1;
+			for (int j = 0; s[i].full_name[j] != '\0'; j++) {
+				if (s[i].full_name[j] != surname[j]) 
+					p = 0;
+			}
+		if (p == 1) 
+			cout << s[i].full_name << s[i].zodiak << s[i].birthday[0] << s[i].birthday[1] << s[i].birthday[2] << endl;
+		}
+	system("pause");
+	return 0;
+}

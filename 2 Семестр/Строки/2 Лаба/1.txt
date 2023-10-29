@@ -1,0 +1,25 @@
+#include <iostream> 
+#include <string> 
+
+using namespace std;
+
+int main()
+
+{
+    setlocale(LC_ALL, "ru");
+    string s;
+    int k = 0, n;
+    cout << "Введите строку" << endl;
+    getline(cin, s);
+    for (auto c : s) {
+        if ((c != ' ') && (c != '.'))
+            k++;
+        else {
+            n = k;
+            k = 0;
+            cout << n << endl;
+        }
+    }
+    system("pause");
+    return 0;
+}

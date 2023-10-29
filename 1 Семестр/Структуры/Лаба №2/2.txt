@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+struct House {
+	char address[50];
+	int floor, rooms, s;
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	House m[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "Введите данные " << endl;
+		cin >> m[i].address >> m[i].floor >> m[i].rooms >> m[i].s;
+	}
+	int room;
+	cout << "Введите количество комнат " << endl;
+	cin >> room;
+	for (int i = 0; i < 3; i++) {
+		if (m[i].rooms == room) {
+			cout << m[i].address <<endl;
+		}
+	}
+	int floor;
+	cout << "Введите этаж " << endl;
+	cin >> floor;
+	for (int i = 0; i < 3; i++) {
+		if ((m[i].rooms == room) && (floor == m[i].floor)) {
+			cout << m[i].address <<endl;
+		}
+	}
+	system("pause");
+	return 0;
+}

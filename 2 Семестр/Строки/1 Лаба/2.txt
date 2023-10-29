@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	string s;
+	getline(cin, s);
+	int bukvi = 0,  tsifri= 0, zn = 0;
+	for (int i = 0; i < s.length(); i++)
+	{
+		if ((s[i] >= '0') && (s[i] <= '9'))
+			tsifri++;
+		if ((s[i] >= 'A' && s[i] <= 'Z') || (s[i] >= 'a' && s[i] <= 'z'))
+			bukvi++;
+	}
+	zn = s.length() - bukvi - tsifri;
+	cout << tsifri << " Цифр "<< bukvi <<" Букв "<< zn <<" Знаков"<<endl;
+	system("pause");
+	return 0;
+}

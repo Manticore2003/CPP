@@ -1,0 +1,36 @@
+#include <iostream>
+#include<cstdlib>
+#include<ctime>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 10;
+	int d = -100;
+	int mas[n], s, sum = 0;
+	srand(time(NULL));
+	for (int k = 0; k < n; k++) {
+		mas[k] = rand()%21 - 10;
+		cout << "mas[] " << mas[k] << endl;
+ 	}
+	for (int k = 0; k < n; k++) {
+		if (mas[k] >= d) {
+			s = 1;
+		}
+		else {
+			s = 0;
+			break;
+		}
+	}
+	if (s == 1) {
+		for (int k = 0; k < n; k++) {
+			if (mas[k] < 0) {
+				sum += mas[k];
+			}
+		}
+	}
+	cout <<"Сумма равна " << sum << endl;
+	system("pause");
+	return 0;
+}

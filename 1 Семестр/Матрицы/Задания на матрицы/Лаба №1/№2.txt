@@ -1,0 +1,30 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 3;
+	float avg;
+	int matr[n][n], sum = 0,count=0;
+	srand(time(NULL));
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < n; k++) {
+			matr[i][k] = rand() % 10;
+			cout << matr[i][k] << " ";
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < n; k++) {
+			sum+= matr[i][k];
+			count++;
+		}
+	}
+	avg = (float)sum / count;
+	cout << "Среднеее арифметическое матрицы = " << avg << endl;
+	system("pause");
+	return 0;
+}

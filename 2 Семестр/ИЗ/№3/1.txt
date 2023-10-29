@@ -1,0 +1,95 @@
+#include<iostream>
+#include <cmath>
+#include<algorithm>
+
+using namespace std;
+
+struct tree {
+	int info;
+	int level;
+	tree* left;
+	tree* right;
+};
+
+void Add(tree* root, int x) {
+	if (x < root->info)
+	{
+		if (root->left == NULL)
+		{
+			tree* q;
+			q = new(tree);
+			q->info = x;
+			q->level = root->level + 1;
+			q->left = NULL;
+			q->right = NULL;
+			root->left = q;
+		}
+		else Add(root->left, x);
+	}
+	else {
+		if (root->right == NULL)
+		{
+			tree* q;
+			q = new(tree);
+			q->info = x;
+			q->level = root->level + 1;
+			q->left = NULL;
+			q->right = NULL;
+			root->right = q;
+		}
+		else Add(root->right, x);
+	}
+}
+
+int Sum_chetn(tree* root) {
+	if (root == NULL) return 0;
+	if (root->level % 2 == 0) 
+		return root->info + Sum_chetn(root->left) + Sum_chetn(root->right);
+	else
+		return Sum_chetn(root->left) + Sum_chetn(root->right);
+	return 0;
+}
+
+int Sum_nechetn(tree* root) {
+	if (root == NULL) return 0;
+	if (root->level % 2 != 0) 
+		return root->info + Sum_nechetn(root->left) + Sum_nechetn(root->right);
+	else 
+		return (Sum_nechetn(root->left) + Sum_nechetn(root->right));
+	return 0;
+}
+
+void Destroy(tree* root) {
+	if (root == NULL) return;
+	Destroy(root->left);
+	Destroy(root->right);
+	delete root;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	tree* root = NULL;
+	int x;
+	cout << "Введите элементы "<<endl;
+	cin >> x;
+	if (x != 0) 
+	{
+		root = new (tree);
+		root->info = x;
+		root->level = 1;
+		root->left = NULL;
+		root->right = NULL;
+	}
+	for (cin >> x; x != 0; cin >> x) {
+		Add(root, x);
+	}
+	Sum_chetn(root);
+	Sum_nechetn(root);
+	cout << "Сумма элементов на нечетных уровнях = " << Sum_chetn(root) << endl;
+	cout << "Сумма элементов на четных уровнях = " << Sum_nechetn(root) << endl;
+	cout << "Разница между четными и нечетными = " << abs(Sum_nechetn(root) - Sum_chetn(root)) << endl;
+	system("pause");
+	Destroy(root);
+	return 0;
+}

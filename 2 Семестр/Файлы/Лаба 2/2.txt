@@ -1,0 +1,22 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int k = 0;
+	string tmp;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/задания.txt");
+	if (f.is_open()) {
+		while (!f.eof()) {
+			f>>tmp;
+			k++;
+		}
+	}
+	cout << "Количество = "<< k << endl;
+	system("pause");
+	return 0;
+}

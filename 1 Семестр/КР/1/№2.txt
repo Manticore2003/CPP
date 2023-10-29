@@ -1,0 +1,37 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int a, b;
+	float avg, sum = 0, k = 0;
+	cout << "Введите 1-ое число " << endl;
+	cin >> a;
+	if (a == 0) {
+		cout << "Последовательность пустая " << endl;
+		return 0;
+	}
+	cout << "Введите 2-ое число " << endl;
+	cin >> b;
+	if (b == 0) {
+		cout << "Последовательность пустая " << endl;
+		return 0;
+	}
+	while (b != 0) {
+		if (b < 0) {
+			if (a % 3 == 0) {
+				sum += a;
+				k++;
+			}
+		}
+	
+		a = b;
+		cout << "Введите следующеее число " << endl;
+		cin >> b;
+	}
+	avg = sum / k;
+	cout << "Среднее арифметическое = " << avg << endl;
+	system("pause");
+	return 0;
+}

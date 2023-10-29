@@ -1,0 +1,39 @@
+#include <iostream>
+#include <list>
+#include <iterator>
+#include <ctime>
+#include <cstdlib>
+using namespace std;
+
+int sum_cif(int x) {
+	int sum = 0;
+	while (x) {
+		sum += x % 10;
+		x /= 10;
+	}
+	return sum;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	srand(time(NULL));
+	list <int> L;
+	for (int i = 0; i < 15; i++) {
+		L.push_back(rand() % 16);
+	}
+	list<int>::iterator iter;
+	for (iter = L.begin(); iter != L.end(); iter++) {
+		cout << *iter << " ";
+	}
+	int k = 0;
+	for (auto iter = L.begin(); iter != L.end(); iter++) {
+		if (sum_cif(*iter) % 2 == 0)
+			k++;
+	}
+	cout << endl;
+	cout << "Количество = " << k << endl;
+	system("pause");
+	return 0;
+}
+

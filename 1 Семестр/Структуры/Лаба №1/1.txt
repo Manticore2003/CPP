@@ -1,0 +1,44 @@
+#include<iostream>
+using namespace std;
+
+struct Fish {
+	char name[50];
+	double fat;
+	double weight;
+	int length;
+};
+int main() {
+	setlocale(LC_ALL, "ru");
+	Fish fish;
+	cout << "Введите название рыбы" << endl;
+	cout << "Введите вес рыбы" << endl;
+	cout << "Введите длина рыбы" << endl;
+	cout << "Введите жирность рыбы" << endl;
+	cin >> fish.name>> fish.weight >> fish.length>> fish.fat;
+	cout << fish.name << endl;
+	if (fish.weight >= 1.5) { 
+		cout << "Крупная" << endl;
+	}
+	else if (fish.weight >= 0.3 && fish.weight < 1.5) {
+		cout << "Средняя" << endl;
+	}
+	else cout << "Мелкая" << endl;
+
+	if (fish.length >= 21) {
+		cout << "Крупная" << endl;
+	}
+	else if ((fish.length >= 18) && (fish.length < 21)) {
+		cout << "Средняя" << endl;
+	}
+	else cout << "Мелкая" << endl;
+
+	if (fish.fat >= 8) {
+		cout << "Жирная" << endl;
+	}
+	else if (fish.fat < 8 && fish.fat >= 4) {
+		cout << "Полужирная " << endl;
+	}
+	else cout << "Нежирная " << endl;
+	system("pause");
+	return 0;
+}

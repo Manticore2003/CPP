@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int tmp, p = 1;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/Файле для проги.txt");
+	if (f.is_open()) {
+		while (!f.eof()){
+			f >> tmp;
+			if (tmp > 0) {
+				p *= tmp;
+			}
+		}
+	}
+	cout <<"Произведение положительных элементов = "<< p << endl;
+	f.close();
+	system("pause");
+	return 0;
+}

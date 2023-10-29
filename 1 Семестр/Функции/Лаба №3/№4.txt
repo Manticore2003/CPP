@@ -1,0 +1,20 @@
+#include<iostream>
+
+using namespace std;
+
+int f(int a) {
+	if (a == 0)
+		return 0;
+	else
+		return f(a / 10) + (a % 10);
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Введите число " << endl;
+	double n;
+	cin >> n;
+	cout <<f(n) <<endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,70 @@
+[15:00] Владислав Романов
+//Задание номер 7
+#include <iostream>
+#include <string>
+using namespace std;int main()
+{
+string s;
+getline(cin, s);
+char mn = '9', mx = '0';
+for (char c : s)
+{
+if (c >= '0' && c <= '9')
+{
+if (c < mn)
+mn = c;
+if (c > mx)
+mx = c;
+}
+}
+setlocale(LC_ALL, "ru");
+if (mn == '9' && mx == '0') cout << "Цифр в строке нет"<<endl;
+else
+{
+cout << "Минимальная цифра: " << mn<<endl;
+cout << "Максимальная цифра: " << mx<<endl; }
+system("pause");
+return 0;
+}
+
+[18:48] Владислав Романов
+//Задание номер 8
+#include <iostream>
+#include <string>
+using namespace std;int main()
+{
+string s;
+getline(cin, s);
+int k = 0;
+setlocale(LC_ALL, "ru");
+for (char c : s)
+{
+switch (c)
+{
+case '!':k ++;
+break;
+case '.':k ++;
+break;
+case '?':k ++;
+break;
+case ':':k ++;
+break;
+case ';':k ++;
+break;
+case ',':k ++;
+break;
+case '-':k ++;
+break;
+case '(':k ++;
+break;
+case ')':k ++;
+break;
+case ' ':k ++;
+break;
+}
+}
+cout << "Кол-во знаков препинания: " << k << endl;
+system("pause");
+return 0;
+}
+

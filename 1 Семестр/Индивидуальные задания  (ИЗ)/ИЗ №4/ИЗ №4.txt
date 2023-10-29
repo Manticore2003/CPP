@@ -1,0 +1,48 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	float avg, sum = 0, k = 0;
+	int m[n][n];
+	srand(time(0));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			m[i][j] = rand() % 11;
+			cout << m[i][j];
+			cout << " ";
+		}
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i == j) {
+				sum += m[i][j];
+				k++;
+			}
+			if ((i + j == n - 1) &&(i !=j)) {
+				sum += m[i][j];
+				k++;
+			}
+		}
+	}
+	cout << endl;
+	avg = sum / k;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (avg < m[i][j]) {
+				m[i][j] = i * j;
+			}
+			cout << m[i][j];
+			cout << " ";
+		}
+		cout << endl;
+	}
+	system("pause");
+	return 0;
+}

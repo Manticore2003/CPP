@@ -1,0 +1,21 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int a, k = 0;
+	for (int i = 1; i <= 10; i++) {
+		cout << "Введите " << i << " число\n";
+		cin >> a;
+		if (a < 0) {
+			k = 1;
+			cout << "Ряд состоит не только из положительных чисел\n";
+			break;
+		}
+	}
+	if (k==0)
+		cout<<"Ряд состоит только из положительных чисел\n";
+	system("pause");
+	return 0;
+}

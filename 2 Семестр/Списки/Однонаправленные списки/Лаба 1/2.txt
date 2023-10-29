@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+struct list {
+	int info;
+	list* next;
+
+};
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	int x;
+	cin >> x;
+	while (x != 0) {
+		list* r = new(list);
+		r->info = x;
+		r->next = head;
+		head = r;
+		cin >> x;
+	}
+	cout << "Вывод списка " << endl;
+	list* p = head;
+	while (p != NULL) {
+		cout << (p->info) << " ";
+		p = p->next;
+	}
+	p = head;
+	int c, k = 0;
+	cout << "Введите число " << endl;
+	cin >> c;
+
+	while (p != NULL) {
+		if (p->info > c)
+			k++;
+		p = p->next;
+	}
+	cout << endl;
+	cout << "Количество = "<< k << endl;
+	p = head;
+	system("pause");
+	while (head != NULL) {
+		p = head;
+		head = head->next;
+		delete p;
+	}
+	return 0;
+}

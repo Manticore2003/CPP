@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int k_p = 0, k_o = 0;
+	vector <int> v(10);
+	srand(time(NULL));
+	for (int i = 0; i < v.size(); i++) {
+		v[i] = (rand() % 11 - 5);
+	}
+	for (int i = 0; i < v.size(); i++) {
+		cout << v[i] << " ";
+	}
+	for (int i = 0; i < v.size(); i++) {
+		if (v[i] < 0)
+			k_o++;
+		if (v[i] > 0)
+			k_p++;
+	}
+	cout << endl;
+	cout <<"Количество отрицательных = " << k_o << endl;
+	cout <<"Количество положительных = " << k_p << endl;
+	system("pause");
+	return 0;
+}

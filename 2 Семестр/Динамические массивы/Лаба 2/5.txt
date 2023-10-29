@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int m ,n;
+	cout << "Введите количество строк"<<endl;
+	cin >> m;
+	cout<<"Введите количество столбцов"<<endl;
+	cin>>n;
+	float** matr = new float* [m];
+	for (int i = 0; i < m; i++) {
+		matr[i] = new float[m];
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> matr[i][j];
+		}
+	}
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			cout << matr[i][j] << ' ';
+		}
+		cout << endl;
+	}
+	int max = matr[0][0];
+	int stolb = 0;
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (matr[i][j] > max) {
+				max = matr[i][j];
+				stolb = j;
+			}
+		}
+	}
+	int pr = 1;
+	for (int i = 0; i < m; i++) {
+		if (matr[stolb][i] != 0) {
+			pr *= matr[stolb][i];
+		}
+	}
+	cout << "Произведение = " << pr << endl;
+	for (int i = 0; i < m; i++) {
+		delete matr[i];
+	}
+	delete[]matr;
+	system("pause");
+	return 0;
+}

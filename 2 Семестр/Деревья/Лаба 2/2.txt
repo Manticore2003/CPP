@@ -1,0 +1,76 @@
+#include <iostream>
+
+using namespace std;
+
+struct Tree {
+	int info;
+	Tree* left;
+	Tree* right;
+};
+void Add(Tree* root, int data) {
+	if (data < root->info)
+		if (root->left == NULL) {
+			Tree* q;
+			q = new(Tree);
+			q->info = data;
+			q->left = NULL;
+			q->right = NULL;
+			root->left = q;
+		}
+		else Add(root->left, data);
+	else
+		if (root->right == NULL) {
+			Tree* q;
+			q = new (Tree);
+			q->info = data;
+			q->left = NULL;
+			q->right = NULL;
+			root->right = q;
+		}
+		else Add(root->right, data);
+}
+
+int Proizvedenie(Tree* root) {
+	if (root != NULL) {
+		if (root->left && !root->left->left && !root->left->right) {
+			return root->left->info;
+		}
+		int p = 1;
+		if (root->left)
+			p *= Proizvedenie(root->left);
+		if (root->right != NULL)
+			p *= Proizvedenie(root->right);
+
+		return p;
+	}
+	else return 1;
+}
+
+void Destroy(Tree* root) {
+	if (root == NULL)
+		return;
+	Destroy(root->left);
+	Destroy(root->right);
+	delete root;
+}
+int main()
+{
+	setlocale(LC_ALL, "RU");
+	Tree* root = NULL;
+	int x;
+	cout << "Введите элементы " << endl;
+	cin >> x;
+	if (x != 0)
+	{
+		root = new Tree;
+		root->info = x;
+		root->left = NULL;
+		root->right = NULL;
+	}
+	for (cin >> x; x != 0; cin >> x)
+		Add(root, x);
+	cout << "Произведение левых листьев = " << Proizvedenie(root) << endl;
+	system("pause");
+	Destroy(root);
+	return 0;
+}

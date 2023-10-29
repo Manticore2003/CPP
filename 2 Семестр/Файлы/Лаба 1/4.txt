@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int Sum(int x)
+{
+	int s = 0;
+	while (x != 0) {
+		s += x % 10;
+		x /= 10;
+	}
+	return s;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int k = 0, tmp;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/Файле для проги.txt");
+	if (f.is_open()) {
+		while (!f.eof()) {
+			f >> tmp;
+			if (Sum(tmp) % 2 == 0)
+				k++;
+		}
+	}
+	cout << "Количество = " << k << endl;
+	f.close();
+	system("pause");
+	return 0;
+}

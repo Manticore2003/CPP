@@ -1,0 +1,18 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int mas[n] = {1,2,3,4,5};
+	int sum = 0;
+	 for (int i = 0; i < n; i++) 
+		 sum+=mas[i];
+		 int p = 1;
+		 for (int a : mas) p *= a;
+		 cout <<"Сумма элементов массива = "<<sum<< endl;
+		 cout << "Произведение элементов массива = " << p << endl;
+	system("pause");
+	return 0;
+}

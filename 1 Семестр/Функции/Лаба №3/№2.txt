@@ -1,0 +1,22 @@
+#include<iostream>
+
+using namespace std;
+
+int truth(double a,double b) {
+	double x = a;
+	if (x <= 1)
+		return 0;
+	else
+		return truth((x / b),b)+1;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Введите число " << endl;
+	int n,m;
+	cin >> n;
+	cin >> m;
+	cout << truth(n, m);
+	system("pause");
+	return 0;
+}

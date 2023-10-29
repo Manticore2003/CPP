@@ -1,0 +1,35 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 4;
+	const int m = 3;
+	int matr[n][m], min,max;
+	srand(time(NULL));
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < m; k++) {
+			matr[i][k] = rand() % 20;
+			cout << matr[i][k]<<" "; }
+		cout << endl;
+	}
+	min = matr[0][0];
+	max = matr[0][0];
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < m; k++) {
+			if (matr[i][k] > max) {
+				max = matr[i][k];
+			}
+			if (matr[i][k] < min) {
+				min = matr[i][k];
+			}
+		}
+	}
+	cout << "Максимальный элемент матрицы  = " << max << endl;
+	cout << "Минимальный элемент матрицы  = " << min << endl;
+	system("pause");
+	return 0;
+}

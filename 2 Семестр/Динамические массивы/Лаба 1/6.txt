@@ -1,0 +1,34 @@
+#include <iostream>
+
+
+
+using namespace std;
+
+
+
+int main() {
+setlocale(LC_ALL, "ru");
+int n;
+cin >> n;
+int* mas = new int[n];
+for (int i = 0; i < n; i++) {
+cout << "Введите элемент "<<endl;
+cin >> mas[i];
+}
+int k = 0;
+for (int i = 1; i < n - 1; i++) {
+int s = 0;
+for (int k = 2; k <= mas[i]; k++) {
+if (mas[i] % k == 0) {
+s += mas[i] / k;
+}
+}
+if ((mas[i - 1] % 2 != 0) && (mas[i + 1] % 2 != 0) && (s == mas[i])) {
+k++;
+}
+}
+cout <<"Количество = " << k;
+delete[]mas;
+system("pause");
+return 0;
+}

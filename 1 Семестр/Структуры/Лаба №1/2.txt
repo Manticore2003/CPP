@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+struct Students {
+	char address[50];
+	int school;
+	int grade;
+	char full_name[100];
+	int id;
+};
+Students s[5];
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Введите инормацию" << endl;
+	for (int i = 0; i < 5; i++) {
+		cout << "Введите полное имя" << endl;
+		cin >> s[i].full_name;
+		cout << "Введите класс" << endl;
+		cin >> s[i].grade;
+		cout << "Введите id" << endl;
+		cin >> s[i].id;
+	}
+	int count = 0;
+	for (int i = 0; i < 5; i++) {
+		if (s[i].grade == 8) count += 1;
+	}
+	cout <<"Количество восьмиклассников = " << count << endl;
+	system("pause");
+	return 0;
+}

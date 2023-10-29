@@ -1,0 +1,104 @@
+#include <iostream>
+
+using namespace std;
+
+struct Tree {
+	int info;
+	Tree* left;
+	Tree* right;
+};
+void Add(Tree* root, int data) {
+	if (data < root->info)
+		if (root->left == NULL) {
+			Tree* q;
+			q = new(Tree);
+			q->info = data;
+			q->left = NULL;
+			q->right = NULL;
+			root->left = q;
+		}
+		else Add(root->left, data);
+	else
+		if (root->right == NULL) {
+			Tree* q;
+			q = new (Tree);
+			q->info = data;
+			q->left = NULL;
+			q->right = NULL;
+			root->right = q;
+		}
+		else Add(root->right, data);
+}
+
+int Sum(Tree* root) {
+	if (root != NULL) {
+		return root->info + Sum(root->left) + Sum(root->right);
+	}
+	else return 0;
+}
+int kolvo(Tree* root) {
+	if (root != NULL) {
+		return 1 + Sum(root->left) + Sum(root->right);
+	}
+	else return 0;
+}
+
+void zam(Tree* root)
+{
+	if (root != NULL)
+	{
+		if (root->info < 0)
+		{
+			root->info = 0;
+			zam(root->left);
+			zam(root->right);
+		}
+		else
+		{
+			zam(root->left);
+			zam(root->right);
+		}
+	}
+}
+void print(Tree* root)
+{
+	if (root != NULL)
+	{
+		cout << root->info << endl;
+		print(root->left);
+		print(root->right);
+	}
+}
+void Destroy(Tree* root) {
+	if (root == NULL)
+		return;
+	Destroy(root->left);
+	Destroy(root->right);
+	delete root;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "RU");
+	Tree* root = NULL;
+	int x;
+	cout << "Введите элементы " << endl;
+	cin >> x;
+	if (x)
+	{
+		root = new Tree;
+		root->info = x;
+		root->left = NULL;
+		root->right = NULL;
+	}
+	int k = 1;
+	for (cin >> x; x != 0; cin >> x)
+	{
+		Add(root, x);
+	}
+	zam(root);
+	print(root);
+	system("pause");
+	Destroy(root);
+	return 0;
+}

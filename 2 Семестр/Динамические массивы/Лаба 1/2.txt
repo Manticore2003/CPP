@@ -1,0 +1,36 @@
+//Задание номер 2
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int n;
+	cin >> n;
+	int* mas = new int[n];
+	for (int i = 0; i < n; i++) {
+		cout << "Введите элемент "<< endl;
+		cin >> mas[i];
+	}
+	for (int i = 0; i < n; i++) {
+		int f = 0;
+		for (int k = 2; k < n; k++) {
+			if (mas[i] == 1) {
+				f = 1;
+			}
+			if (mas[i] % k == 0) {
+				f = 1;
+				break;
+			}
+		}
+		if (f == 0) {
+			mas[i] = i;
+		}
+	}
+	for (int i = 0; i < n; i++) {
+		cout << mas[i];
+	}
+	delete[]mas;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int x,a=1, n=4, k=1;  // На место n можно подставить любое число , которое является количесвтом в последовательности
+	cout << "Введите число \n";
+	cin >> x;
+	a = x;
+	for (int i = 1; i < n; i++) {
+		cout << "Введите число " << endl;
+		cin >> x;
+		if (x < a)
+			break;
+		else
+			k++;
+		a = x;
+	}
+	if (k == n)
+		cout << "Является  возрастающей " << endl;
+	else
+		cout << "Не является" << endl;
+	system("pause");
+	return 0;
+}

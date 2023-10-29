@@ -1,0 +1,31 @@
+#include <iostream>
+
+
+
+using namespace std;
+
+
+
+int main() {
+setlocale(LC_ALL, "ru");
+int n;
+cin >> n;
+int* mas = new int[n];
+for (int i = 0; i < n; i++) {
+cout << "Введите элемент"<<endl;
+cin >> mas[i];
+}
+int min;
+for (int i = 0; i < n; i++) {
+if (mas[i] >= 0)
+min = mas[i];
+}
+for (int i = 0; i < n; i++) {
+if ((mas[i] < min) && (mas[i] >= 0))
+min = mas[i];
+}
+cout << min;
+delete[]mas;
+system("pause");
+return 0;
+}

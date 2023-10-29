@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 4;
+	const int m = 5;
+	int matr[n][m], count=0;
+	srand(time(NULL));
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < m; k++) {
+			matr[i][k] = rand() % 11-5;
+			cout << matr[i][k]<<" "; }
+		cout << endl;
+	}
+	for (int i = 0; i < n; i++) {
+		for (int k = 0; k < m; k++) {
+			if (matr[i][k] > 0) {
+				count++;
+			}
+		}
+	}
+	cout << "Количество положительных элементов матрицы = " << count << endl;
+	system("pause");
+	return 0;
+}

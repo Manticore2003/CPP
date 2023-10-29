@@ -1,0 +1,14 @@
+#include<iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	cout << "Числа от 35 до 87, которые при делении на 7 дают остаток 1,2,5\n";
+	for (int i = 35; i <= 87; i++) {
+		if ((i % 7 == 1) || (i % 7 == 2) || (i % 7 == 5))
+			cout << i << endl;
+	}
+	system("pause");
+	return 0;
+}

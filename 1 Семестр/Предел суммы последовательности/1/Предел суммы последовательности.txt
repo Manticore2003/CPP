@@ -1,0 +1,24 @@
+#include<iostream>
+#include<cmath>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	int a=1, b=2, y, n;
+	float c=1, s = 0;
+	cout << "Введите предел суммирования" << endl;
+	cin >> n;
+	cout << "Введите y" << endl;
+	cin >> y;
+	s += (a * b) / (c + 1);
+	for (int i = 2; i <= n; i++) {
+		a *= (-1);
+		b *= (i + 1);
+		c *= pow(y, 3);
+		s += (a * b) / (c + 1);
+	}
+	cout << "Сумма предела равна" << s << endl;
+	system("pause");
+	return 0;
+}

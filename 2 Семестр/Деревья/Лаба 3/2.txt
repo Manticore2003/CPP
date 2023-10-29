@@ -1,0 +1,109 @@
+#include <iostream>
+
+using namespace std;
+
+struct tree {
+	int info;
+	int lvl;
+	tree* right;
+	tree* left;
+};
+
+void add(tree* root, int x)
+{
+	if (x < root->info)
+	{
+		if (root->left == NULL)
+		{
+			tree* q;
+			q = new(tree);
+			q->info = x;
+			q->lvl = root->lvl + 1;
+			q->left = NULL;
+			q->right = NULL;
+			root->left = q;
+		}
+		else add(root->left, x);
+	}
+	else
+	{
+		if (root->right == NULL)
+		{
+			tree* q;
+			q = new(tree);
+			q->info = x;
+			q->lvl = root->lvl + 1;
+			q->left = NULL;
+			q->right = NULL;
+			root->right = q;
+		}
+		else add(root->right, x);
+	}
+}
+
+void print(tree* root)
+{
+	if (root != NULL)
+	{
+		cout << root->info << " ";
+		print(root->right);
+		print(root->left);
+	}
+}
+void destroy(tree* root)
+{
+	if (root == NULL) return;
+	destroy(root->left);
+	destroy(root->right);
+	delete root;
+}
+
+void maxil(tree* root, int& maxlvl)
+{
+	if (root != NULL) {
+		if (root->lvl > maxlvl) maxlvl = root->lvl;
+		maxil(root->left, maxlvl);
+		maxil(root->right, maxlvl);
+	}
+}
+void find(tree* root, int x)
+{
+	if (root != NULL) {
+		if (x == root->info) {
+			cout << root->lvl << endl;
+			return;
+		}
+		find(root->left, x);
+		find(root->right, x);
+	}
+	return;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int x;
+	cout << "Введите элементы дерева " << endl;
+	cin >> x;
+	if (x != 0)
+	{
+		tree* root = new (tree);
+		root->info = x;
+		root->lvl = 0;
+		root->left = NULL;
+		root->right = NULL;
+		for (cin >> x; x != 0; cin >> x)
+		{
+			add(root, x);
+
+		}
+		print(root);
+		cout << endl << endl;
+		int maxlvl = -1;
+		maxil(root, maxlvl);
+		cout << maxlvl << endl;
+		destroy(root);
+	}
+
+	system("pause");
+	return 0;
+}

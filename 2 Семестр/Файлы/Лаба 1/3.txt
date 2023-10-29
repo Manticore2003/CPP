@@ -1,0 +1,31 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int Tree(int x)
+{
+	bool flag = 0;
+	while (x) {
+		if (x % 10 == 3) flag = true;
+		x /= 10;
+	}
+	return flag;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int tmp, k = 0;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/Файле для проги.txt");
+	if (f.is_open()) {
+		while (!f.eof()) {
+			f >> tmp;
+			if (Tree(tmp))
+				k++;
+		}
+	}
+	cout << "Количество элементов, содержащих тройку = " << k << endl;
+	f.close();
+	system("pause");
+	return 0;
+}

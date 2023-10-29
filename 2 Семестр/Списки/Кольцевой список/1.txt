@@ -1,0 +1,96 @@
+#include <iostream>
+
+using namespace std;
+
+struct list {
+	int info;
+	list* next;
+};
+
+int max(list* head) {
+	list* t = head;
+	int m = t->info;
+	do {
+		if (t->info > m)
+		{
+			m = t->info;
+		}
+		t = t->next;
+	} while (t != head);
+	return m;
+
+}
+
+int min(list* head) {
+	list* c = head;
+	int k = c->info;
+	do {
+		if (c->info < k)
+		{
+			k = c->info;
+		}
+		c = c->next;
+	} while (c != head);
+	return k;
+
+}
+void AddList(list** head)
+{
+	list* t = new(list);
+	cout << "Введите значение " << endl;
+	cin >> t->info;
+	t->next = *head;
+	if ((*head) == NULL)
+	{
+		t->next = t;
+		(*head) = t;
+		return;
+	}
+	list* p = *head;
+	while (p->next != *head)
+	{
+		p = p->next;
+	}
+	p->next = t;
+}
+
+void PrintList(list* head)
+{
+	list* t = head;
+	do
+	{
+		cout << t->info << " ";
+		t = t->next;
+	} while (t != head);
+	cout << " \n";
+}
+
+void DestroyList(list* head)
+{
+	list* p = head;
+	if (head == NULL) return;
+	while (p != p->next)
+	{
+		list* r = p->next;
+		p->next = r->next;
+		delete r;
+	}
+	delete p;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	int x;
+	cout << " Введите количество добавляемых элементов " << endl;
+	cin >> x;
+	for (int i = 0; i < x; i++) {
+		AddList(&head);
+		PrintList(head);
+	}
+	cout << "Минимальный элемент = " << min(head) << endl;
+	cout << "Максимальный элемент = " << max(head) << endl;
+	system("pause");
+	return 0;
+}

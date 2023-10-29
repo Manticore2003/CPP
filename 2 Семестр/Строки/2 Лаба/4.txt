@@ -1,0 +1,39 @@
+#include<iostream>
+#include<string>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int N = 3;
+	int cl = 0;
+	int ml = 0;
+	string cl_s;
+	string ml_s;
+	for (int j = 0; j < N; j++) {
+		string s;
+		getline(cin, s);
+		for (int i = 0; i < s.length(); i++) {
+			if ((s[i] == ' ') || (s[i] == '.')) {
+				if (cl > ml) {
+					ml = cl;
+					ml_s = cl_s;
+				}
+				cl = 0;
+				cl_s = ' ';
+			}
+			else {
+				cl++;
+				cl_s += s[i];
+			}
+		}
+	}
+	if (cl > ml) {
+		cl = ml;
+		ml_s = cl_s;
+	}
+	cout << ml_s << endl;
+	system("pause");
+	return 0;
+}

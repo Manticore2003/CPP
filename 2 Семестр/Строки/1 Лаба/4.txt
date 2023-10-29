@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	string s;
+	getline(cin, s);
+	while (s.length() % 2 == 0)
+	{
+		cout <<"Введена строка четной длины"<<endl;
+		getline(cin, s);
+	}
+	cout << s[0]<<endl;
+	cout << s[(s.length() - 1) / 2] << endl;
+	cout << s[s.length() - 1] << endl;
+	
+}

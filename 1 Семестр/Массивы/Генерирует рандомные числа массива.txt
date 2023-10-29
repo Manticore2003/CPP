@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int mas[n];
+	srand(time(NULL));
+	for (int i = 0; i < n; i++) {
+		mas[i] = rand() % 31;
+		cout << i + 1 << "-й элемент: " << mas[i] << endl;
+	}
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,40 @@
+#include <iostream>
+
+using namespace std;
+
+int sum_c(int a) {
+	int sum = 0;
+	while (a) {
+		sum += a % 10;
+		a /= 10;
+	}
+	return sum;
+}
+bool prostoy(int sum_c) {
+	int k = 0;
+	for (int j = 1; j <= sum_c; j++) {
+		if (sum_c % j == 0) {
+			k++;
+		}
+	}
+	if (k == 2)
+		return 1;
+	else
+		return 0;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	cout << "Введите элементы " << endl;
+	int a, count = 0;
+	cin >> a;
+	while (a) {
+		if (prostoy(sum_c(a))) {
+			count++;
+		}
+		cin >> a;
+	}
+	cout << "Количество элементов с простой суммой цифр: " << count<<endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+double line(double x1, double y1, double x2, double y2) {
+	return sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
+}
+double square(double a, double b, double c) {
+	double s, p = (a + b + c) / 2;
+	return s = sqrt(p * (p - a) * (p - b) * (p - c));
+}
+bool triangle(double a, double b, double c) {
+	if (a + b > c && a + c > b && b + c > a)
+		return true;
+	else
+		return false;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	double x1 = 1, y1, x2, y2, x3, y3;
+	double point1_2, point1_3, point2_3;
+	do {
+		cout << "Введите координаты треугольника " << endl;
+		cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+		point1_2 = line(x1, y1, x2, y2);
+		point1_3 = line(x1, y1, x3, y3);
+		point2_3 = line(x2, y2, x3, y3);
+		if (triangle(point1_2, point1_3, point2_3) == true)
+			cout << "Площадь треугольника = " << square(point1_2, point2_3, point1_3) << endl;
+		else
+			cout << "Треугольник не существует " << endl;
+	}
+	while (!(x1 == 0 && y1 == 0 && x2 == 0 && y2 == 0 && x3 == 0 && y3 == 0));
+	system("pause");
+	return 0;
+}

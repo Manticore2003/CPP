@@ -1,0 +1,97 @@
+#include<iostream>
+
+using namespace std;
+
+struct list {
+	int info;
+	list* next;
+};
+
+int prostoe(int a) {
+	int d = 0;
+	for (int i = 1; i <= a; i++) {
+		if (a % i == 0)
+			d++;
+	}
+	if (d == 2)
+		return 1;
+	else
+		return 0;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	int x, n, min;
+	cout << "Введите число " << endl;
+	cin >> n;
+	cout << "Введите элементы: " << endl;
+	cin >> x;
+	min = x;
+	if (x != 0) {
+		head = new(list);
+		head->info = x;
+		head->next = NULL;
+		list* last = head;
+		cin >> x;
+		while (x != 0) {
+			list* r = new(list);
+			r->info = x;
+			r->next = NULL;
+			last->next = r;
+			last = r;
+			cin >> x;
+		}
+	}
+	cout << "Вывод списка: " << endl;
+	list* p = head;
+	while (p != NULL) {
+		cout << (p->info) << endl;
+		p = p->next;
+	}
+	p = head;
+	while (p != NULL) {
+		if (p->info < min)
+			min = p->info;
+		p = p->next;
+	}
+	p = head;
+	if (min < n)
+	{
+		while (p != NULL && p->next != NULL) {
+			if (prostoe(p->next->info)) {
+				list* r = p->next;
+				p->next = p->next->next;
+				delete r;
+			}
+			else
+				p = p->next;
+		}
+	}
+	else {
+		while (p != NULL)
+		{
+			if (p->info % 2 == 0) {
+				list* r = new(list);
+				r->info = min;
+				r->next = p->next;
+				p->next = r;
+				p = r;
+			}
+			p = p->next;
+		}
+	}
+	cout << "Новый список: " << endl;
+	p = head;
+	while (p != NULL) {
+		cout << (p->info) << endl;
+		p = p->next;
+	}
+	system("pause");
+	while (head != NULL) {
+		p = head;
+		head = head->next;
+		delete p;
+	}
+	return 0;
+}

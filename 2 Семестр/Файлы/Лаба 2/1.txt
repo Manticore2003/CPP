@@ -1,0 +1,26 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int tsifr = 0, bukv = 0;
+	char tmp;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/задания.txt");
+	if (f.is_open()) {
+		while (!f.eof()) {
+			f >> tmp;
+			if ((tmp >= '0') && (tmp <= '9'))
+				tsifr++;
+			if (((tmp >= 'a') && (tmp <= 'z')) || ((tmp >= 'A') && (tmp <= 'Z')))
+				bukv++;
+		}
+	}
+	cout << "Количество букв = " << bukv << endl;
+	cout << "Количество цифр = " << tsifr << endl;
+	system("pause");
+	return 0;
+}

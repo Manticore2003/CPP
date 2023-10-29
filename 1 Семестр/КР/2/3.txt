@@ -1,0 +1,32 @@
+#include<iostream>
+#include<ctime>
+#include<cstdlib>
+using namespace std;
+int main()
+{
+setlocale(LC_ALL, "ru");
+const int n = 3;
+int mas[n][n];
+srand(time(0));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			mas[i][j] = rand() % 10;
+			cout << mas[i][j] <<" ";
+		}
+		cout << endl;
+	}
+	cout << endl;
+	float m[n];
+	for (int i = 0; i < n; i++) {
+		float avg, sum = 0, k = 0;
+		for (int j = 0; j < n; j++) {
+			sum += mas[i][j];
+			k++;
+		}
+		avg = sum / k;
+		m[i] = avg;
+		cout << m[i]<< " ";
+	}
+system("pause");
+return 0;
+}

@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+
+	cout << "Простой калькулятор для вычисления математических операций над двумя переменными" << endl;
+	double a, b;
+	int c;
+	cout << "Введите первое число: " <<endl;
+	cin >> a;
+	cout <<endl << "Введите второе число: " << endl;
+	cin >> b;
+
+	cout <<endl << "Выберите математическую операцию, введя соответсвующую цифру и нажмите клавишу Enter: " <<endl;
+	cout << "Сложение - 1" <<endl;
+	cout << "Вычитание - 2" <<endl;
+	cout << "Умножение - 3" << endl;
+	cout <<"Деление - 4" << endl;
+	cin >> c;
+
+	switch (c)
+	{
+	case 1:
+		cout << endl <<"Результат сложения введенных чисел: " <<(float)a + b <<endl;
+		break;
+	case 2:
+		cout << endl << "Результат вычитания введенных чисел: "<<(float)a - b <<endl;
+		break;
+	case 3:
+		cout << endl << "Результат умножения введенных чисел: " <<(float)a * b << endl;
+		break;
+	case 4:
+		if (b == 0)
+			cout << endl << "Деление на ноль невозможно!" <<endl;
+		else
+			cout << endl << "Результат деления введенных чисел: " <<(float)a / b <<endl;
+		break;
+	default:
+		cout << "Вы ввели некорректный номер операции " << endl;
+		break;
+	}
+}

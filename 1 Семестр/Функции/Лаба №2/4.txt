@@ -1,0 +1,46 @@
+#include<iostream>
+
+using namespace std;
+
+bool sovershennoe(int x) {
+	int sum = 0;
+	for (int a = 1; a < x; a++) {
+		if (x % a == 0) {
+			sum += a;
+		}
+	}
+	if (sum == x) {
+		return 1;
+	}
+	else
+		return 0;
+}
+bool np(int y) {
+	int d = 0;
+	for (int a = 1; a <= y; a++) {
+		if (y % a == 0) {
+			d++;
+		}
+	}
+	if ((d > 2) || (y == 1)) {
+		return 1;
+	}
+	else
+		return 0;
+}
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int mas[n] = {6,1,10,6,25}, count = 0;
+	cout << endl;
+	for (int i = 0; i < n - 1; i++) {
+		if ((sovershennoe(mas[i]) == 1) && (np(mas[i + 1]) == 1)) {
+			count++;
+		}
+	}
+	cout<<"Количество совершенных чисел,после которых следуют непростые = " << count << endl;
+	system("pause");
+	return 0;
+}

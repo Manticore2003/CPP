@@ -1,0 +1,86 @@
+#include <iostream>
+
+using namespace std;
+
+struct list {
+	int info;
+	list* pred;
+	list* next;
+};
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	list* last = NULL;
+	int x;
+	cout << "Введите элементы списка " << endl;
+	cin >> x;
+	if (x != 0)
+	{
+		head = new(list);
+		head->info = x;
+		head->next = NULL;
+		head->pred = NULL;
+		last = head;
+		cin >> x;
+		while (x != 0)
+		{
+			list* r = new(list);
+			r->info = x;
+			r->next = NULL;
+			r->pred = last;
+			last->next = r;
+			last = r;
+			cin >> x;
+		}
+	}
+	cout << "Вывод списка " << endl;
+	list* p = head;
+	while (p != NULL)
+	{
+		cout << (p->info) << " " << endl;
+		p = p->next;
+	}
+	p = head;
+	int k = 0, sum = 0;
+	while (p != NULL)
+	{
+		sum += (p->info);
+		k++;
+		p = p->next;
+	}
+	float avg = (float)sum / k;
+	p = head;
+	while (p->next != NULL)
+	{
+		if (p->next->info < avg)
+		{
+			list* r = p->next;
+			p->next = p->next->next;
+			delete r;
+		}
+		else
+			p = p->next;
+	}
+	if (head->info < avg)
+	{
+		list* r = head;
+		head = head->next;
+		delete r;
+	}
+	cout << "Вывод списка " << endl;
+	p = head;
+	while (p != NULL)
+	{
+		cout << (p->info) << " ";
+		p = p->next;
+	}
+	while (head != NULL) {
+		p = head;
+		head = head->next;
+		delete p;
+	}
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,22 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	char s;
+	cin >> s;
+	const int n = 10;
+	char mas[n] = { '0','1','2','3','4','5','6','7','8','9' };
+	int f = 0;
+	for (int i = 0; i < n; i++)
+		if (mas[i] == s)
+			f = 1;
+	if (f == 1)
+		cout << "Цифра" << endl;
+	else
+		cout << "Не цифра" << endl;
+system("pause");
+return 0;
+}

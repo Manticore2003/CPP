@@ -1,0 +1,36 @@
+#include<iostream>
+#include<cstdlib>
+#include<ctime>
+
+using namespace std;
+
+int s(int x) {
+	int sum = 0, double_x = x;
+	while (double_x) {
+		sum += (double_x % 10);
+		double_x /= 10;
+	}
+	return sum;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 10;
+	int mas[n], sum = 0;
+	srand(time(0));
+	for (int i = 0; i < n; i++) {
+		mas[i] = rand() % 100;
+		cout << mas[i] << " ";
+	}
+	cout << endl;
+	int max = s(mas[0]), k;
+	for (int i = 1; i < n; i++) {
+		if (s(mas[i]) > max) {
+			max = s(mas[i]);
+			k = i;
+		}
+	}
+	cout << "Элемент с максимальной суммой цифр = " << mas[k]<<endl;
+	system("pause");
+	return 0;
+}

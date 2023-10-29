@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int i = 4;
+	int m[i][i];
+	float sum1 = 0, avg, count=0;
+	srand(time(NULL));
+	for (int l = 0; l < i; l++) {
+		for (int t = 0; t < i; t++) {
+			m[l][t] = rand() % 11;
+			cout << m[l][t] << " ";
+		}
+		cout << endl;
+	}
+	for (int l = 0; l < i; l++) {
+		for (int k = 0; k < i; k++) {
+			if (l == k) {
+				sum1 += m[l][k];
+			}
+		}
+	}
+	avg = sum1 / i;
+	cout << "Среднее арифметическое = " << avg;
+	for (int l = 0; l < i; l++) {
+		for (int k = 0; k < i; k++) {
+			if ((l < k) && (m[l][k] > avg)) {
+				count++;
+			}
+		}
+	}
+	cout << endl;
+	cout <<"Количество элементов = " << count << endl;
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+struct Product {
+	char name[50];
+	float price;
+	int date[3];
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	Product m[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "Введите данные " << endl;
+		cin >> m[i].name >> m[i].price >> m[i].date[0] >> m[i].date[1] >> m[i].date[2];
+	}
+	int exp_d, max_price;
+	cout << "Введите максимальную цену " << endl;
+	cin >> max_price;
+	cout << "Введите срок годности " << endl;
+	cin >> exp_d;
+	for (int i = 0; i < 3; i++) {
+		if (m[i].price <= max_price) {
+			cout << m[i].name << " ";
+		}
+	}
+	cout << endl;
+	for (int i = 0; i < 3; i++) {
+		if (m[i].date[2] >= exp_d) {
+			cout << m[i].name << " ";
+		}
+	}
+	system("pause");
+	return 0;
+}

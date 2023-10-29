@@ -1,0 +1,23 @@
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int tmp, sum = 0;
+	ifstream f("C:/Users/Home/OneDrive/Рабочий стол/Файле для проги.txt");
+	if (f.is_open()) {
+		while (!f.eof()){
+			f >> tmp;
+			if (tmp % 2 == 0) {
+				sum += tmp;
+			}
+		}
+	}
+	cout <<"Сумма чётных элементов = "<< sum << endl;
+	f.close();
+	system("pause");
+	return 0;
+}

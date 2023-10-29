@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	int k = 0;
+	string s;
+	getline(cin, s);
+	if (s.length() >= 15) {
+		for (int i = 0; i < s.length(); i++) {
+			if ((s[i] == '.') || (s[i] == ',') || (s[i] == '-') || (s[i] == '/') || (s[i] == ':') || (s[i] == ';')) 
+				k++;
+		}
+	}
+	else {
+		for (int i = 0; i < s.length(); i++) {
+			if ((s[i] == 'a') || (s[i] == 'e') || (s[i] == 'i') || (s[i] == 'o') || (s[i] == 'u') || (s[i] == 'y'))
+				k++;
+		}
+	}
+	cout << k << endl; 
+	system("pause");
+	return 0;
+}

@@ -1,0 +1,27 @@
+#include<iostream>
+
+using namespace std;
+
+int f(int y) {
+	int sum = 0, sq_sum, double_y = y;
+	while (double_y) {
+		sum += (double_y % 10);
+		double_y /= 10;
+	}
+	sq_sum = sum * sum;
+	return sq_sum;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 10;
+	int mas[n] = { 220,284,50,60,70,12,45,25,6,45 };
+	for (int i = 0; i < n; i++) {
+		if (i % 3 == 0) {
+			mas[i] = f(mas[i]);
+		}
+		cout << mas[i] << " ";
+	}
+	system("pause");
+	return 0;
+}

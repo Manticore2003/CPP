@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+struct Phone {
+	char name[100];
+	long long int number;
+	int international_calls, c_calls;
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	Phone m[3];
+	for (int i = 0; i < 3; i++) {
+		cout << "Введите данные " << endl;
+		cin >> m[i].name >> m[i].number >> m[i].international_calls >> m[i].c_calls;
+	}
+	int limit;
+	cout << "Введите ограничение " << endl;
+	cin >> limit;
+	for (int i = 0; i < 3; i++) {
+		if (m[i].c_calls > limit) {
+			cout << "Имя человека,который превысил лимит разговоров - " << m[i].name << endl;
+			cout<<"Его номер - " << m[i].number << endl;
+		}
+	}
+	cout << "Воспользовались междугородней связью - ";
+	for (int i = 0; i < 3; i++) {
+		if ((m[i].international_calls != 0)) {
+			cout << m[i].name<<" ";
+		}
+	}
+	cout << endl;
+	system("pause");
+	return 0;
+}

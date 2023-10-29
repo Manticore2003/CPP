@@ -1,0 +1,32 @@
+#include<iostream>
+
+using namespace std;
+
+bool f(int x) {
+	int double_x = x, k = 0;
+	while (double_x) {
+		if (double_x % 10 == 1) {
+			k++;
+		}
+		double_x /= 10;
+	}
+	if (k >= 2) {
+		return 1;
+	}
+	else
+		return 0;
+}
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	const int n = 5;
+	int count = 0, mas[n] = {111,101,5110,60,70};
+	for (int i = 0; i < n; i++) {
+		if (f(mas[i]) == 1) {
+			count++;
+		}
+	}
+	cout<<"Количество таких элементов = " << count << endl;
+	system("pause");
+	return 0;
+}

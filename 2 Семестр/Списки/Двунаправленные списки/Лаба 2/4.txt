@@ -1,0 +1,82 @@
+#include <iostream>
+
+using namespace std;
+
+int sov (int x) {
+	int sum = 0;
+	for (int i = 1; i < x; i++) {
+		if (x % i == 0)
+			sum += i;
+	}
+	if (sum == x)
+		return 1;
+	else
+		return 0;
+
+};
+struct list {
+	int info;
+	list* next;
+	list* pred;
+};
+int main()
+{
+	setlocale(LC_ALL, "ru");
+	list* head = NULL;
+	list* last = NULL;
+	int x;
+	cout << "Введите элементы " << endl;
+	cin >> x;
+	if (x != 0) {
+		head = new(list);
+		head->info = x;
+		head->next = NULL;
+		head->pred = NULL;
+		last = head;
+		cin >> x;
+		while (x != 0) {
+			list* r = new(list);
+			r->info = x;
+			r->next = NULL;
+			r->pred = last;
+			last->next = r;
+			last = r;
+			cin >> x;
+
+		}
+	}
+	cout << "Вывод списка " << endl;
+	list* p = head;
+	while (p != NULL) {
+		cout << p->info << " ";
+		p = p->next;
+	}
+	cout << endl;
+
+	p = head;
+	while (p -> next != NULL) {
+		if (sov(p->next->info)) {
+			list* r = new(list);
+			r->info = p -> next -> info + p -> next -> info;
+			r->next = p->next;
+			r->pred = p;
+			p->next = r;
+			p = r;
+		}
+		p = p->next;
+	}
+
+	p = head;
+	while (p != NULL) {
+		cout << (p->info) << " ";
+		p = p->next;
+	}
+	cout << endl;
+	system("pause");
+	while (head != NULL) {
+		p = head;
+		head = head->next;
+		delete p;
+	}
+	return 0;
+}
